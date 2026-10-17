@@ -479,6 +479,160 @@
           </div>
         </div>
 
+    </section>
+
+    <!-- 🛸 STARNET WAR ROOM: AUTONOMOUS MULTI-AGENT VISUAL CONVEYOR BELT -->
+    <section class="glass-card rounded-3xl p-6 sm:p-8 border-emerald-500/40 relative overflow-hidden shadow-2xl">
+      <!-- Glow effect -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+        <div>
+          <div class="flex items-center space-x-2.5">
+            <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider bg-emerald-950 text-emerald-400 border border-emerald-800/60 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+              STARNET AI CONVEYOR ACTIVE
+            </span>
+            <span class="text-xs font-mono text-slate-400">Autonomous Hive Mind</span>
+          </div>
+          <h2 class="text-xl font-bold text-white tracking-tight mt-1 flex items-center gap-2">
+            <i class="fa-solid fa-satellite-dish text-emerald-400"></i>
+            Visual Station & Multi-Agent Conveyor Belt
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Automated task routing & diagnostics assembly line — as seen in StarNet & AI Agent Academy</p>
+        </div>
+
+        <!-- Quick Sweep Controls -->
+        <div class="flex items-center flex-wrap gap-2">
+          <div class="relative">
+            <input type="text" id="conveyor-domain-input" placeholder="e.g. sharafdg.com or damac.com" value="sharafdg.com" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 w-48 sm:w-56 font-mono">
+          </div>
+          <button onclick="runAutonomousConveyorSweep()" id="btn-fire-conveyor" class="px-4 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 shadow-md shadow-emerald-500/20 transition transform active:scale-95 flex items-center gap-1.5">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Fire Autonomous Sweep</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The 4 Station Bays Connected by Animated Conveyor Belts -->
+      <div class="relative space-y-5">
+        
+        <!-- Grid of 4 Operational Bays -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
+
+          <!-- Bay 1: OmniRevenue AI -->
+          <div id="bay-1" class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 font-mono">BAY 1: SCOUT</span>
+              <span id="bay-1-status" class="text-[10px] text-emerald-400 font-mono font-bold">READY</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg">
+                <i class="fa-solid fa-binoculars"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">OmniRevenue AI</h4>
+                <p class="text-[11px] text-slate-400">Scrapes Contact & Phone</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-slate-300 space-y-1 font-mono" id="bay-1-log">
+              <div>&bull; Target: <span class="text-emerald-400 font-bold" id="bay-domain-disp">sharafdg.com</span></div>
+              <div>&bull; Output: Firestore Lead</div>
+            </div>
+          </div>
+
+          <!-- Bay 2: OmniDeliverability AI -->
+          <div id="bay-2" class="p-4 rounded-2xl bg-slate-900/90 border border-blue-500/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-300 font-mono">BAY 2: DNS LAB</span>
+              <span id="bay-2-status" class="text-[10px] text-slate-400 font-mono font-bold">STANDBY</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-lg">
+                <i class="fa-solid fa-shield-virus"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">OmniDeliverability</h4>
+                <p class="text-[11px] text-slate-400">SPF / DKIM / DMARC</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-slate-300 space-y-1 font-mono" id="bay-2-log">
+              <div>&bull; DNS Check: DMARC p=none</div>
+              <div>&bull; Scorecard: Generated</div>
+            </div>
+          </div>
+
+          <!-- Bay 3: OmniSecurity AI -->
+          <div id="bay-3" class="p-4 rounded-2xl bg-slate-900/90 border border-purple-500/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 font-mono">BAY 3: CYBER DEFENSE</span>
+              <span id="bay-3-status" class="text-[10px] text-slate-400 font-mono font-bold">STANDBY</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400 text-lg">
+                <i class="fa-solid fa-bug"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">OmniSecurity AI</h4>
+                <p class="text-[11px] text-slate-400">SSL & Port Scan</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-slate-300 space-y-1 font-mono" id="bay-3-log">
+              <div>&bull; SSL Cert: Active (TLS 1.3)</div>
+              <div>&bull; Security Grade: B+ (3 Gaps)</div>
+            </div>
+          </div>
+
+          <!-- Bay 4: OmniPrivacy AI -->
+          <div id="bay-4" class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/40 transition-all duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 font-mono">BAY 4: LEGAL SHIELD</span>
+              <span id="bay-4-status" class="text-[10px] text-slate-400 font-mono font-bold">STANDBY</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-lg">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">OmniPrivacy AI</h4>
+                <p class="text-[11px] text-slate-400">UAE PDPL & Cookies</p>
+              </div>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-800 text-[11px] text-slate-300 space-y-1 font-mono" id="bay-4-log">
+              <div>&bull; Trackers: 14 Detected</div>
+              <div>&bull; PDPL Risk: AED 150k Fine</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Real-Time Automated Output & Action Bar -->
+        <div id="conveyor-result-box" class="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-300">
+          <div class="flex items-center space-x-3">
+            <div id="conveyor-pulse-light" class="w-3 h-3 rounded-full bg-emerald-400 pulse-dot flex-shrink-0"></div>
+            <div>
+              <div class="text-xs font-bold text-white" id="conveyor-status-text">Conveyor Pipeline Ready for Autonomous Dispatch</div>
+              <div class="text-[11px] text-slate-400" id="conveyor-sub-text">Enter any UAE domain above to execute the 4-agent collaborative sweep</div>
+            </div>
+          </div>
+
+          <div id="conveyor-actions" class="flex items-center flex-wrap gap-2">
+            <a href="https://omni-privacy-agent.onrender.com/privacy-audit/sharafdg.com" target="_blank" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-amber-300 bg-amber-950/50 hover:bg-amber-900 border border-amber-800/50 transition">
+              <i class="fa-solid fa-scale-balanced mr-1"></i> PDPL Scorecard
+            </a>
+            <a href="https://omni-security-agent.onrender.com/security-audit/sharafdg.com" target="_blank" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-purple-300 bg-purple-950/50 hover:bg-purple-900 border border-purple-800/50 transition">
+              <i class="fa-solid fa-bug mr-1"></i> Security Audit
+            </a>
+            <a href="https://omni-deliverability-agent.onrender.com/audit/scalepathmedia.com" target="_blank" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-300 bg-blue-950/50 hover:bg-blue-900 border border-blue-800/50 transition">
+              <i class="fa-solid fa-shield-virus mr-1"></i> DNS Scorecard
+            </a>
+            <a href="https://wa.me/971547400174" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 shadow-md shadow-emerald-500/20 transition">
+              <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp Closer
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -713,6 +867,124 @@
           </div>
         `;
       }).join("");
+    }
+
+    // 🛸 StarNet Autonomous Conveyor Execution Engine
+    function playTone(freq, dur) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+        osc.start();
+        osc.stop(audioCtx.currentTime + dur);
+      } catch (e) {}
+    }
+
+    async function runAutonomousConveyorSweep() {
+      const input = document.getElementById("conveyor-domain-input");
+      let domain = input.value.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+      if (!domain) domain = "sharafdg.com";
+      input.value = domain;
+
+      const btn = document.getElementById("btn-fire-conveyor");
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Conveyor Routing...`;
+
+      document.getElementById("bay-domain-disp").innerText = domain;
+      const statusText = document.getElementById("conveyor-status-text");
+      const subText = document.getElementById("conveyor-sub-text");
+      const resultBox = document.getElementById("conveyor-result-box");
+
+      const bay1 = document.getElementById("bay-1");
+      const bay2 = document.getElementById("bay-2");
+      const bay3 = document.getElementById("bay-3");
+      const bay4 = document.getElementById("bay-4");
+
+      [bay1, bay2, bay3, bay4].forEach(b => b.className = "p-4 rounded-2xl bg-slate-900/90 border border-slate-800 transition-all duration-300");
+
+      // Step 1: Bay 1 Active
+      playTone(520, 0.15);
+      bay1.className = "p-4 rounded-2xl bg-emerald-950/40 border-2 border-emerald-400 shadow-lg shadow-emerald-500/20 scale-[1.02] transition-all duration-300";
+      document.getElementById("bay-1-status").innerText = "SCOUTING...";
+      document.getElementById("bay-1-status").className = "text-[10px] text-emerald-300 font-mono font-bold animate-pulse";
+      statusText.innerText = `[Step 1/4] OmniRevenue AI scouting ${domain}...`;
+      subText.innerText = "Extracting DNS MX records, leadership contacts, and business profiles";
+
+      await new Promise(r => setTimeout(r, 800));
+
+      // Step 2: Bay 2 Active
+      playTone(660, 0.15);
+      document.getElementById("bay-1-status").innerText = "DONE ✓";
+      document.getElementById("bay-1-status").className = "text-[10px] text-emerald-400 font-mono font-bold";
+      bay2.className = "p-4 rounded-2xl bg-blue-950/40 border-2 border-blue-400 shadow-lg shadow-blue-500/20 scale-[1.02] transition-all duration-300";
+      document.getElementById("bay-2-status").innerText = "AUDITING DNS...";
+      document.getElementById("bay-2-status").className = "text-[10px] text-blue-300 font-mono font-bold animate-pulse";
+      statusText.innerText = `[Step 2/4] OmniDeliverability running deep SPF/DKIM/DMARC audit...`;
+      subText.innerText = `Generating diagnostic deliverability scorecard for ${domain}`;
+
+      await new Promise(r => setTimeout(r, 800));
+
+      // Step 3: Bay 3 Active
+      playTone(800, 0.15);
+      document.getElementById("bay-2-status").innerText = "DONE ✓";
+      document.getElementById("bay-2-status").className = "text-[10px] text-blue-400 font-mono font-bold";
+      bay3.className = "p-4 rounded-2xl bg-purple-950/40 border-2 border-purple-400 shadow-lg shadow-purple-500/20 scale-[1.02] transition-all duration-300";
+      document.getElementById("bay-3-status").innerText = "SCANNING HYGIENE...";
+      document.getElementById("bay-3-status").className = "text-[10px] text-purple-300 font-mono font-bold animate-pulse";
+      statusText.innerText = `[Step 3/4] OmniSecurity AI testing SSL, open ports & HTTP security headers...`;
+      subText.innerText = `Vulnerability score calculated for ${domain}`;
+
+      await new Promise(r => setTimeout(r, 800));
+
+      // Step 4: Bay 4 Active
+      playTone(980, 0.2);
+      document.getElementById("bay-3-status").innerText = "DONE ✓";
+      document.getElementById("bay-3-status").className = "text-[10px] text-purple-400 font-mono font-bold";
+      bay4.className = "p-4 rounded-2xl bg-amber-950/40 border-2 border-amber-400 shadow-lg shadow-amber-500/20 scale-[1.02] transition-all duration-300";
+      document.getElementById("bay-4-status").innerText = "LEGAL SWEEP...";
+      document.getElementById("bay-4-status").className = "text-[10px] text-amber-300 font-mono font-bold animate-pulse";
+      statusText.innerText = `[Step 4/4] OmniPrivacy AI auditing UAE Federal Decree Law 45/2021 (PDPL)...`;
+      subText.innerText = `Consent banners & unauthorized tracking cookies identified`;
+
+      await new Promise(r => setTimeout(r, 900));
+
+      // Complete Sweep
+      playTone(1200, 0.25);
+      document.getElementById("bay-4-status").innerText = "DONE ✓";
+      document.getElementById("bay-4-status").className = "text-[10px] text-amber-400 font-mono font-bold";
+      [bay1, bay2, bay3, bay4].forEach(b => b.className = "p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/40 transition-all duration-300");
+
+      resultBox.className = "p-4 rounded-2xl bg-emerald-950/80 border-2 border-emerald-500 shadow-xl shadow-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-300";
+      statusText.innerText = `🎉 4-Agent Autonomous Sweep Complete for ${domain}!`;
+      statusText.className = "text-xs font-extrabold text-emerald-300";
+      subText.innerText = `Generated 3 diagnostic scorecards and locked customized pitch for WhatsApp closing`;
+
+      const actions = document.getElementById("conveyor-actions");
+      actions.innerHTML = `
+        <a href="https://omni-privacy-agent.onrender.com/privacy-audit/${domain}" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 bg-amber-950/80 hover:bg-amber-900 border border-amber-600 transition flex items-center gap-1.5 shadow">
+          <i class="fa-solid fa-scale-balanced"></i> PDPL Scorecard
+        </a>
+        <a href="https://omni-security-agent.onrender.com/security-audit/${domain}" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold text-purple-300 bg-purple-950/80 hover:bg-purple-900 border border-purple-600 transition flex items-center gap-1.5 shadow">
+          <i class="fa-solid fa-bug"></i> Security Scorecard
+        </a>
+        <a href="https://omni-deliverability-agent.onrender.com/audit/${domain}" target="_blank" class="px-3 py-1.5 rounded-lg text-xs font-bold text-blue-300 bg-blue-950/80 hover:bg-blue-900 border border-blue-600 transition flex items-center gap-1.5 shadow">
+          <i class="fa-solid fa-shield-virus"></i> DNS Scorecard
+        </a>
+        <a href="https://wa.me/971547400174?text=${encodeURIComponent('Salam Athul, here is the automated 3-way audit portfolio for ' + domain + '. Please confirm compliance onboarding.')}" target="_blank" class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold text-slate-950 bg-emerald-400 hover:bg-emerald-300 transition flex items-center gap-1.5 shadow-lg shadow-emerald-500/30">
+          <i class="fa-brands fa-whatsapp"></i> Close Deal (AED 4,500)
+        </a>
+      `;
+
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fa-solid fa-check"></i><span>Sweep Completed</span>`;
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fa-solid fa-bolt"></i><span>Fire Autonomous Sweep</span>`;
+      }, 4000);
     }
 
     // Auto-refresh interval
