@@ -184,7 +184,8 @@ async def update_lead_status(domain: str = Form(...), status: str = Form(...), d
         return {"status": "SUCCESS", "domain": clean_d, "new_status": status}
     return JSONResponse(status_code=404, content={"status": "ERROR", "message": "Lead not found"})
 
-@app.get("/master")
-async def redirect_to_master():
-    """Helper link to Master Fleet Command."""
-    return RedirectResponse(url="https://omni-revenue-uae.onrender.com/master", status_code=302)
+@app.get("/master", response_class=HTMLResponse)
+@app.get("/portfolio", response_class=HTMLResponse)
+async def master_portfolio_view(request: Request):
+    """Unified Multi-Agent Executive Command Center with All Fleet Links."""
+    return templates.TemplateResponse(request, "master_dashboard.html", {"request": request})
