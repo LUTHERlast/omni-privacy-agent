@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniPrivacy AI — Autonomous UAE PDPL Fleet Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #080c14; color: #f1f5f9; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .pulse-dot { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <!-- Top Nav & Agent Fleet Identity -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/80 p-5 rounded-3xl border border-slate-800 shadow-xl">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+                    <i class="fa-solid fa-scale-balanced text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <h1 class="text-xl font-bold text-white tracking-tight">OmniPrivacy AI</h1>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">AGENT 4</span>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 pulse-dot"></span> FLEET ONLINE
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-0.5">UAE Federal Decree-Law No. 45/2021 (PDPL) & Bilingual Cookie Consent Hardening Engine</p>
+                </div>
+            </div>
+
+            <!-- Operator Quick Contact -->
+            <div class="flex items-center space-x-3 text-xs bg-slate-950/80 px-4 py-2.5 rounded-2xl border border-slate-800">
+                <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-indigo-400 font-bold">AR</div>
+                <div>
+                    <div class="font-semibold text-white">Athul raj (Lead Specialist)</div>
+                    <div class="text-[11px] text-slate-400 flex items-center space-x-2">
+                        <span class="text-emerald-400"><i class="fa-brands fa-whatsapp"></i> +971 54 740 0174</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metric KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-l-indigo-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Audited Assets</p>
+                        <h3 class="text-3xl font-extrabold text-white mt-1">{{ total_audits }}</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-3">Scanned for UAE PDPL & Trackers</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-l-rose-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Critical Exposure</p>
+                        <h3 class="text-3xl font-extrabold text-rose-400 mt-1">{{ critical_risks }}</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-3">High-risk fines (AED 50k - 250k+)</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-l-amber-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active UAE Pipeline</p>
+                        <h3 class="text-3xl font-extrabold text-amber-400 mt-1">AED {{ "{:,.0f}".format(total_pipeline) }}</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-3">{{ total_leads }} qualified commercial leads</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-l-emerald-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Closed Deals</p>
+                        <h3 class="text-3xl font-extrabold text-emerald-400 mt-1">AED {{ "{:,.0f}".format(actual_revenue) }}</h3>
+                    </div>
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-3">{{ paid_count }} retained clients</p>
+            </div>
+        </div>
+
+        <!-- On-Demand UAE Audit Input -->
+        <div class="glass-card p-6 rounded-3xl border-slate-800 shadow-xl">
+            <h3 class="text-sm font-bold text-white mb-2 flex items-center space-x-2">
+                <i class="fa-solid fa-bolt text-amber-400"></i>
+                <span>Instant UAE PDPL Compliance Inspector</span>
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">Enter any UAE business domain to immediately crawl for unlawful pre-consent tracking cookies and generate a public diagnostic scorecard.</p>
+            
+            <form action="/api/audit/scan" method="POST" class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 text-sm">
+                        https://
+                    </div>
+                    <input type="text" name="domain" placeholder="e.g. asterdmhealthcare.com, damacproperties.com" required
+                        class="w-full pl-20 pr-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 font-mono">
+                </div>
+                <input type="text" name="company_name" placeholder="Company Name (Optional)"
+                    class="sm:w-64 px-4 py-3 rounded-2xl bg-slate-950/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500">
+                <button type="submit" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 flex items-center justify-center space-x-2 shrink-0 transition-all">
+                    <i class="fa-solid fa-radar"></i>
+                    <span>Run Diagnostic Scan</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Lead Pipeline Table -->
+        <div class="glass-card rounded-3xl overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h3 class="text-base font-bold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-crosshairs text-indigo-400"></i>
+                        <span>UAE Target Accounts & WhatsApp Outreach Queue</span>
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Direct decision-maker outreach with pre-computed PDPL diagnostic proof.</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="/master" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold border border-slate-700 flex items-center space-x-1.5 transition-all">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <span>Fleet Master Command</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="text-[11px] uppercase bg-slate-950/60 text-slate-400 border-b border-slate-800 font-semibold tracking-wider">
+                        <tr>
+                            <th class="py-3.5 px-4">Domain & Entity</th>
+                            <th class="py-3.5 px-4">PDPL Score</th>
+                            <th class="py-3.5 px-4">Trackers Detected</th>
+                            <th class="py-3.5 px-4">Consent CMP</th>
+                            <th class="py-3.5 px-4">Contact & Phone</th>
+                            <th class="py-3.5 px-4">Direct WhatsApp Outreach</th>
+                            <th class="py-3.5 px-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-sans">
+                        {% for item in leads_data %}
+                        <tr class="hover:bg-slate-800/30 transition-colors">
+                            <td class="py-4 px-4">
+                                <div class="font-bold text-white text-sm">{{ item.company_name }}</div>
+                                <div class="text-[11px] font-mono text-slate-400 flex items-center space-x-1 mt-0.5">
+                                    <i class="fa-solid fa-link text-[9px] text-slate-500"></i>
+                                    <span>{{ item.domain }}</span>
+                                </div>
+                                <span class="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300">
+                                    {{ item.industry }}
+                                </span>
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-base font-extrabold {% if item.score >= 80 %}text-emerald-400{% elif item.score >= 50 %}text-amber-400{% else %}text-rose-400{% endif %}">
+                                        {{ item.score }}/100
+                                    </span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase
+                                        {% if item.grade == 'A' %}bg-emerald-500/20 text-emerald-300
+                                        {% elif item.grade in ['B', 'C'] %}bg-amber-500/20 text-amber-300
+                                        {% else %}bg-rose-500/20 text-rose-300{% endif %}">
+                                        Grade {{ item.grade }}
+                                    </span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">{{ item.fine_exposure }}</div>
+                            </td>
+
+                            <td class="py-4 px-4 font-mono">
+                                <span class="px-2 py-1 rounded text-xs font-bold {% if item.trackers_count > 0 %}bg-rose-500/20 text-rose-300 border border-rose-500/30{% else %}bg-emerald-500/20 text-emerald-300{% endif %}">
+                                    {{ item.trackers_count }} Active Beacons
+                                </span>
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <span class="px-2 py-1 rounded text-[11px] font-semibold {% if item.cmp_status == 'COMPLIANT' %}bg-emerald-500/10 text-emerald-400{% elif item.cmp_status == 'INADEQUATE' %}bg-amber-500/10 text-amber-400{% else %}bg-rose-500/10 text-rose-400{% endif %}">
+                                    {{ item.cmp_status }}
+                                </span>
+                                <div class="text-[10px] text-slate-400 mt-1">{{ item.cmp_name or 'None' }}</div>
+                            </td>
+
+                            <td class="py-4 px-4 font-mono">
+                                {% if item.phone %}
+                                    {% if item.phone.startswith('9715') or item.phone.startswith('05') %}
+                                        <div class="text-emerald-400 font-bold flex items-center space-x-1">
+                                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                                            <span>+{{ item.phone }}</span>
+                                        </div>
+                                        <span class="text-[10px] text-emerald-300/80">UAE Mobile (Active WA)</span>
+                                    {% else %}
+                                        <div class="text-amber-400 font-semibold flex items-center space-x-1">
+                                            <i class="fa-solid fa-phone text-xs"></i>
+                                            <span>+{{ item.phone }}</span>
+                                        </div>
+                                        <span class="text-[10px] text-amber-400/80">Landline (No WA)</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="text-slate-500 italic">No direct line</span>
+                                {% endif %}
+                            </td>
+
+                            <!-- 1-Click WhatsApp Pitch & Copy Pitch -->
+                            <td class="py-4 px-4">
+                                <div class="flex flex-col space-y-1.5">
+                                    {% if item.phone and (item.phone.startswith('9715') or item.phone.startswith('05')) %}
+                                    <a href="{{ item.wa_link }}" target="_blank" class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs shadow-md shadow-emerald-500/20 transition-all">
+                                        <i class="fa-brands fa-whatsapp mr-1.5 text-sm"></i> Pitch on WhatsApp
+                                    </a>
+                                    {% else %}
+                                    <a href="https://wa.me/?text={{ item.encoded_pitch }}" target="_blank" class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 font-bold text-xs transition-all">
+                                        <i class="fa-brands fa-whatsapp mr-1.5"></i> Select Contact on WA
+                                    </a>
+                                    {% endif %}
+
+                                    <button onclick="copyPitchText(`{{ item.raw_pitch_escaped }}`)" class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] border border-slate-700 transition-all">
+                                        <i class="fa-regular fa-copy mr-1 text-indigo-400"></i> Copy Pitch Text
+                                    </button>
+                                </div>
+                            </td>
+
+                            <!-- Scorecard Link & Status -->
+                            <td class="py-4 px-4 text-right">
+                                <div class="flex flex-col items-end space-y-1.5">
+                                    <a href="/privacy-audit/{{ item.domain }}" target="_blank" class="px-3 py-1 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 font-semibold text-xs border border-indigo-500/30 flex items-center space-x-1 transition-all">
+                                        <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                                        <span>Scorecard</span>
+                                    </a>
+                                    <span class="text-[10px] font-mono uppercase text-slate-400">
+                                        Status: <strong class="text-white">{{ item.status }}</strong>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Live Activity Log -->
+        <div class="glass-card p-6 rounded-3xl border-slate-800">
+            <h3 class="text-sm font-bold text-white mb-4 flex items-center space-x-2">
+                <i class="fa-solid fa-satellite-dish text-indigo-400"></i>
+                <span>Live Agent Audit Feed</span>
+            </h3>
+            <div class="space-y-2.5 max-h-56 overflow-y-auto font-mono text-xs text-slate-300 pr-2">
+                {% for ev in events %}
+                <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-start space-x-3">
+                    <span class="w-1.5 h-1.5 rounded-full mt-1.5 {% if ev.severity == 'CRITICAL' %}bg-rose-400{% else %}bg-indigo-400{% endif %}"></span>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center text-[10px] text-slate-500">
+                            <span>{{ ev.event_type }} • {{ ev.domain or 'SYSTEM' }}</span>
+                            <span>{{ ev.timestamp.strftime('%H:%M:%S UTC') }}</span>
+                        </div>
+                        <p class="text-slate-300 text-xs mt-0.5">{{ ev.message }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <p class="text-slate-500 italic">No events logged yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification for Copy -->
+    <div id="copyToast" class="fixed bottom-6 right-6 bg-emerald-500 text-slate-950 px-4 py-2.5 rounded-2xl font-bold text-xs shadow-2xl flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-check-circle text-base"></i>
+        <span>Pitch copied to clipboard! Ready to paste into WhatsApp.</span>
+    </div>
+
+    <script>
+        function copyPitchText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copyToast');
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
+            }).catch(err => {
+                alert('Could not auto-copy. Please use the WhatsApp button directly.');
+            });
+        }
+    </script>
+</body>
+</html>

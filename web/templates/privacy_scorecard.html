@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE PDPL Regulatory Compliance Audit | {{ audit.domain }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f1f5f9; }
+        .uae-gold { color: #d4af37; }
+        .uae-border-gold { border-color: #d4af37; }
+        .glass-card { background: rgba(18, 24, 38, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    </style>
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+        
+        <!-- Top Bar / Regulatory Banner -->
+        <div class="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-4 rounded-2xl border border-indigo-500/20 shadow-2xl">
+            <div class="flex items-center space-x-3 mb-3 sm:mb-0">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                    <i class="fa-solid fa-scale-balanced text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-400">UAE Regulatory Compliance Framework</span>
+                    <h2 class="text-sm font-semibold text-slate-200">Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL)</h2>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-ping"></span> Live Verification
+                </span>
+                <span class="text-xs text-slate-400 font-mono">Ref: {{ audit.audit_token }}</span>
+            </div>
+        </div>
+
+        <!-- Header Card -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+                <div>
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-medium text-slate-300 mb-3">
+                        <i class="fa-solid fa-globe text-indigo-400"></i>
+                        <span>Inspected Asset: {{ audit.domain }}</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+                        Data Privacy & Consent Diagnostic Audit
+                    </h1>
+                    <p class="text-slate-400 max-w-2xl text-sm sm:text-base">
+                        Comprehensive autonomous inspection of third-party tracking telemetry, consent management mechanics, and mandatory UAE PDPL disclosures.
+                    </p>
+                </div>
+
+                <!-- Circular Score Gauge -->
+                <div class="flex items-center space-x-5 bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-inner">
+                    <div class="relative w-24 h-24 flex items-center justify-center">
+                        <svg class="w-24 h-24 transform -rotate-90">
+                            <circle cx="48" cy="48" r="40" stroke="currentColor" stroke-width="8" class="text-slate-800" fill="transparent" />
+                            <circle cx="48" cy="48" r="40" stroke="currentColor" stroke-width="8" 
+                                class="{% if audit.overall_score >= 80 %}text-emerald-500{% elif audit.overall_score >= 50 %}text-amber-500{% else %}text-rose-500{% endif %}" 
+                                stroke-dasharray="251.2" 
+                                stroke-dashoffset="{{ 251.2 - (251.2 * audit.overall_score / 100) }}" 
+                                stroke-linecap="round" 
+                                fill="transparent" />
+                        </svg>
+                        <div class="absolute flex flex-col items-center">
+                            <span class="text-2xl font-black text-white">{{ audit.overall_score }}</span>
+                            <span class="text-[10px] text-slate-400 uppercase font-semibold">/ 100</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase font-medium">Compliance Grade</div>
+                        <div class="text-2xl font-black {% if audit.compliance_grade == 'A' %}text-emerald-400{% elif audit.compliance_grade in ['B', 'C'] %}text-amber-400{% else %}text-rose-500{% endif %}">
+                            Grade {{ audit.compliance_grade }}
+                        </div>
+                        <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wide mt-1
+                            {% if audit.risk_level == 'COMPLIANT' %}bg-emerald-500/20 text-emerald-300
+                            {% elif audit.risk_level in ['LOW', 'MODERATE'] %}bg-amber-500/20 text-amber-300
+                            {% else %}bg-rose-500/20 text-rose-300{% endif %}">
+                            {{ audit.risk_level }} RISK
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fine Exposure Alert -->
+            <div class="mt-8 p-4 rounded-2xl bg-rose-950/40 border border-rose-500/30 flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                        <h3 class="text-sm font-bold text-rose-200">Estimated Regulatory Fine Exposure</h3>
+                        <span class="text-base font-extrabold text-rose-400 font-mono mt-1 sm:mt-0">{{ audit.fine_exposure_est }}</span>
+                    </div>
+                    <p class="text-xs text-rose-300/80 mt-1">
+                        Under UAE Federal Decree-Law No. 45 of 2021 and its Executive Regulations, processing personal consumer data without explicit prior consent or failing to provide mandatory disclosures carries substantial administrative penalties.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Key Diagnostic Pillar Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+            <!-- Pillar 1: Trackers -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 {% if audit.trackers_count == 0 %}border-l-emerald-500{% else %}border-l-rose-500{% endif %}">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-800 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+                    <span class="text-xs font-bold px-2 py-1 rounded {% if audit.trackers_count == 0 %}bg-emerald-500/10 text-emerald-400{% else %}bg-rose-500/10 text-rose-400{% endif %}">
+                        {% if audit.trackers_count == 0 %}CLEAN{% else %}{{ audit.trackers_count }} DETECTED{% endif %}
+                    </span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-300">Pre-Consent Trackers</h4>
+                <p class="text-2xl font-black text-white mt-1">{{ audit.trackers_count }}</p>
+                <p class="text-xs text-slate-400 mt-2">
+                    {% if audit.trackers_count > 0 %}
+                    Marketing scripts harvesting data prior to consent.
+                    {% else %}
+                    No unauthorized telemetry firing on initial load.
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Pillar 2: CMP Banner -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 {% if audit.cmp_status == 'COMPLIANT' %}border-l-emerald-500{% elif audit.cmp_status == 'INADEQUATE' %}border-l-amber-500{% else %}border-l-rose-500{% endif %}">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-800 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <span class="text-xs font-bold px-2 py-1 rounded {% if audit.cmp_status == 'COMPLIANT' %}bg-emerald-500/10 text-emerald-400{% elif audit.cmp_status == 'INADEQUATE' %}bg-amber-500/10 text-amber-400{% else %}bg-rose-500/10 text-rose-400{% endif %}">
+                        {{ audit.cmp_status }}
+                    </span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-300">Consent Banner (CMP)</h4>
+                <p class="text-base font-bold text-white mt-1">{{ audit.cmp_name or 'None Detected' }}</p>
+                <p class="text-xs text-slate-400 mt-2">
+                    {% if audit.cookie_blocking_enabled %}
+                    Strict prior-blocking mechanics active.
+                    {% else %}
+                    No affirmative opt-in shield blocking scripts.
+                    {% endif %}
+                </p>
+            </div>
+
+            <!-- Pillar 3: Privacy Policy -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 {% if audit.policy_status == 'COMPLIANT' %}border-l-emerald-500{% elif audit.policy_status == 'DEFICIENT' %}border-l-amber-500{% else %}border-l-rose-500{% endif %}">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-800 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-file-contract"></i>
+                    </div>
+                    <span class="text-xs font-bold px-2 py-1 rounded {% if audit.policy_status == 'COMPLIANT' %}bg-emerald-500/10 text-emerald-400{% elif audit.policy_status == 'DEFICIENT' %}bg-amber-500/10 text-amber-400{% else %}bg-rose-500/10 text-rose-400{% endif %}">
+                        {{ audit.policy_status }}
+                    </span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-300">UAE PDPL Policy</h4>
+                <p class="text-base font-bold text-white mt-1">
+                    {% if audit.has_pdpl_reference %}Decree 45/2021 Cited{% else %}Generic / Foreign Policy{% endif %}
+                </p>
+                <div class="flex items-center space-x-2 text-[11px] text-slate-400 mt-2">
+                    <span>DPO: {% if audit.has_dpo_reference %}<i class="fa-solid fa-check text-emerald-400"></i>{% else %}<i class="fa-solid fa-xmark text-rose-400"></i>{% endif %}</span>
+                    <span>Arabic: {% if audit.has_arabic_version %}<i class="fa-solid fa-check text-emerald-400"></i>{% else %}<i class="fa-solid fa-xmark text-rose-400"></i>{% endif %}</span>
+                </div>
+            </div>
+
+            <!-- Pillar 4: Lead Forms -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 {% if audit.forms_status == 'COMPLIANT' %}border-l-emerald-500{% elif audit.forms_status == 'NO_FORMS' %}border-l-slate-500{% else %}border-l-rose-500{% endif %}">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-800 text-indigo-400 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <span class="text-xs font-bold px-2 py-1 rounded {% if audit.forms_status == 'COMPLIANT' %}bg-emerald-500/10 text-emerald-400{% elif audit.forms_status == 'NO_FORMS' %}bg-slate-700 text-slate-300{% else %}bg-rose-500/10 text-rose-400{% endif %}">
+                        {{ audit.forms_status }}
+                    </span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-300">Form Opt-in Checkboxes</h4>
+                <p class="text-base font-bold text-white mt-1">
+                    {% if audit.forms_lacking_consent > 0 %}
+                    {{ audit.forms_lacking_consent }} Form(s) Non-Compliant
+                    {% else %}
+                    Consent Controls Intact
+                    {% endif %}
+                </p>
+                <p class="text-xs text-slate-400 mt-2">
+                    Inquiry forms collecting PII without consent checkboxes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Detected Trackers Breakdown -->
+        {% if trackers %}
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center">
+                    <i class="fa-solid fa-bug"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Active Tracking Scripts Firing Without Consent</h3>
+                    <p class="text-xs text-slate-400">The following third-party beacons were loaded immediately during cold page visit without visitor opt-in:</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="text-xs uppercase bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                        <tr>
+                            <th class="py-3 px-4">Tracker / Beacon</th>
+                            <th class="py-3 px-4">Classification</th>
+                            <th class="py-3 px-4">Legal Violation (UAE PDPL)</th>
+                            <th class="py-3 px-4 text-right">Risk Level</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
+                        {% for t in trackers %}
+                        <tr class="hover:bg-slate-800/30">
+                            <td class="py-3 px-4 font-semibold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-radio text-rose-400 text-xs"></i>
+                                <span>{{ t.name }}</span>
+                            </td>
+                            <td class="py-3 px-4 text-slate-300">{{ t.category }}</td>
+                            <td class="py-3 px-4 text-slate-400 font-sans">{{ t.legal_note }}</td>
+                            <td class="py-3 px-4 text-right">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300">
+                                    {{ t.risk }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Legal Violations & Citations -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                    <i class="fa-solid fa-gavel"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Statutory Violations & Regulatory Citations</h3>
+                    <p class="text-xs text-slate-400">Specific provisions under UAE Federal Decree-Law No. 45 of 2021:</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                {% for issue in issues %}
+                <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 rounded-full {% if issue.severity == 'CRITICAL' %}bg-rose-500{% else %}bg-amber-500{% endif %}"></span>
+                            <h4 class="text-sm font-bold text-white">{{ issue.title }}</h4>
+                        </div>
+                        <span class="text-xs font-mono text-indigo-400 font-semibold mt-1 sm:mt-0">{{ issue.pdpl_article }}</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed">{{ issue.description }}</p>
+                </div>
+                {% else %}
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-emerald-300 text-sm">
+                    No critical PDPL statutory violations identified during this baseline inspection.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 3-Step Remediation Action Blueprint -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Turnkey Remediation Blueprint</h3>
+                    <p class="text-xs text-slate-400">Guaranteed full compliance deployment in 24 hours without server disruption:</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {% for bp in blueprint %}
+                <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">{{ bp.step }}</div>
+                        <p class="text-xs text-slate-300 leading-relaxed mt-2">{{ bp.action }}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center text-[11px]">
+                        <span class="text-slate-400"><i class="fa-regular fa-clock mr-1"></i> {{ bp.timeline }}</span>
+                        <span class="text-emerald-400 font-medium">{{ bp.impact }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="rounded-3xl bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 p-8 sm:p-10 border border-indigo-500/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Zero Downtime Compliance Fix</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Shield Your Business From PDPL Fines</h3>
+                <p class="text-sm text-slate-300 max-w-xl mt-2">
+                    We deploy a compliant bilingual Consent Management Shield, update your privacy disclosures, and eliminate illegal tracking beacons within 24 hours.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+                <a href="https://wa.me/971547400174?text={{ wa_text }}" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold bg-emerald-500 hover:bg-emerald-600 text-slate-950 transition-all shadow-lg hover:shadow-emerald-500/25">
+                    <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Fix on WhatsApp with Athul
+                </a>
+                <a href="/privacy-checkout/{{ audit.domain }}" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-all">
+                    <i class="fa-solid fa-receipt text-indigo-400 mr-2"></i> View Packages (AED)
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-slate-500 py-4 border-t border-slate-800/80">
+            <p>OmniPrivacy AI • UAE Regulatory Compliance Engine • Certified for UAE Federal Decree-Law No. 45/2021</p>
+            <p class="mt-1">Lead Regulatory Engineer: Athul raj • Direct Line: +971 54 740 0174</p>
+        </div>
+
+    </div>
+</body>
+</html>
